@@ -1,53 +1,53 @@
 #!/usr/bin/env python3
 """
-Тестовый файл для проверки установки зависимостей
+Test file for checking dependency installation
 """
 
 def test_imports():
-    """Проверяет, что все необходимые модули установлены"""
+    """Checks that all required modules are installed"""
     try:
         import aiogram
-        print("✅ aiogram установлен успешно")
+        print("✅ aiogram installed successfully")
     except ImportError:
-        print("❌ aiogram не установлен. Выполните: pip install aiogram")
+        print("❌ aiogram is not installed. Run: pip install aiogram")
         return False
     
     try:
         import dotenv
-        print("✅ python-dotenv установлен успешно")
+        print("✅ python-dotenv installed successfully")
     except ImportError:
-        print("❌ python-dotenv не установлен. Выполните: pip install python-dotenv")
+        print("❌ python-dotenv is not installed. Run: pip install python-dotenv")
         return False
     
     try:
         from config import BOT_TOKEN
         if BOT_TOKEN == "YOUR_BOT_TOKEN_HERE":
-            print("⚠️  Токен бота не настроен!")
-            print("📝 Создайте файл .env с содержимым: BOT_TOKEN=ваш_токен_здесь")
-            print("📝 Или замените YOUR_BOT_TOKEN_HERE в config.py на ваш токен")
+            print("⚠️  Bot token is not set!")
+            print("📝 Create a .env file with: BOT_TOKEN=your_token_here")
+            print("📝 Or replace YOUR_BOT_TOKEN_HERE in config.py with your token")
             return False
         else:
-            print("✅ Токен бота настроен")
+            print("✅ Bot token is set")
     except Exception as e:
-        print(f"❌ Ошибка при загрузке конфигурации: {e}")
+        print(f"❌ Error loading configuration: {e}")
         return False
     
     return True
 
 def main():
-    """Главная функция"""
-    print("🔍 Проверка установки Telegram-бота...")
+    """Main function"""
+    print("🔍 Checking Telegram bot setup...")
     print("=" * 50)
     
     if test_imports():
         print("=" * 50)
-        print("✅ Все готово! Можно запускать бота:")
+        print("✅ All set! You can run the bot:")
         print("   python bot.py")
-        print("   или")
+        print("   or")
         print("   python advanced_bot.py")
     else:
         print("=" * 50)
-        print("❌ Есть проблемы с установкой. Смотрите инструкции выше.")
+        print("❌ There are problems with the setup. See instructions above.")
 
 if __name__ == "__main__":
     main() 
